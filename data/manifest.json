@@ -1,0 +1,14 @@
+{
+  "schema_version": "poc-atlas-manifest-v1",
+  "generated_at": "2026-03-26",
+  "shards": [
+    {
+      "path": "data/shards/2026.json",
+      "count": 1
+    },
+    {
+      "path": "data/shards/2024.json",
+      "count": 2
+    }
+  ]
+}

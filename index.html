@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Searchable CVE PoC index for security research." />
+    <meta name="theme-color" content="#0f1115" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'self' https://fonts.gstatic.com https://raw.githubusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self';">
+    <title>PoC Atlas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap"
+        rel="stylesheet" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/poc-atlas.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <header class="topbar">
+        <div>
+            <h1><a href="#" style="font-style: normal;">PoC Atlas</a></h1>
+            <p class="subtitle">Explorer for CVE proof-of-concepts</p>
+        </div>
+        <div class="topbar-actions">
+            <button id="refreshBtn" class="ghost-btn" type="button" aria-label="Refresh from index.json">Refresh
+                Index</button>
+            <button id="themeToggle" class="ghost-btn" type="button" aria-label="Toggle theme">Toggle Theme</button>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="panel controls controls-top">
+
+            <div class="ticker" aria-label="Validation note">
+                <p class="ticker-track">PoCs referenced from external sources may not be fully validated. Always review and
+                    test responsibly!!!!</p>
+            </div>
+            
+            <div class="controls-inline">
+                <label class="field field-inline">
+                    <span>Search</span>
+                    <input id="searchInput" type="search" placeholder="CVE, vendor, product, category, tags" autocomplete="off" />
+                    <button id="searchBtn" aria-label="Search">Search</button>
+                </label>
+                <label class="field field-inline">
+                    <span>Severity</span>
+                    <select id="severityFilter">
+                        <option value="all">All severities</option>
+                    </select>
+                </label>
+                <label class="field field-inline">
+                    <span>Category</span>
+                    <select id="categoryFilter">
+                        <option value="all">All categories</option>
+                    </select>
+                </label>
+            </div>
+
+
+            <p id="indexMeta" class="meta">Loading index...</p>
+            <p id="schemaWarnings" class="schema-warnings" aria-live="polite"></p>
+            <p class="hint">Data source: <code>data/manifest.json</code> shards (fallback: <code>index.json</code>)</p>
+        </section>
+
+        <section class="content-grid">
+            <section class="panel list-panel">
+                <div class="list-header">
+                    <h2>Entries</h2>
+                    <span id="resultCount">0</span>
+                </div>
+                <div class="result-row result-row-head" aria-hidden="true">
+                    <span>CVE</span>
+                    <span>Vendor</span>
+                    <span>Product</span>
+                    <span>Severity</span>
+                    <span>CVSS</span>
+                    <span>Category</span>
+                </div>
+                <div id="results" class="results" role="listbox" aria-label="CVE entries" tabindex="0"></div>
+            </section>
+
+            <aside class="panel detail-panel">
+                <h2>Detail</h2>
+                <div id="detailBody" class="detail-body empty">
+                    Select an entry to inspect metadata, references, CVSS, and README content.
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>For educational and authorized security research only.</p>
+    </footer>
+
+    <div id="detailSheet" class="detail-sheet" hidden aria-hidden="true">
+        <div class="detail-sheet-backdrop"></div>
+        <div class="detail-sheet-panel" role="dialog" aria-modal="true" aria-label="Selected CVE details">
+            <div class="detail-sheet-header">
+                <h2>Detail</h2>
+                <button id="detailCloseBtn" class="ghost-btn" type="button"
+                    aria-label="Close detail panel">Close</button>
+            </div>
+            <div id="detailSheetBody" class="detail-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

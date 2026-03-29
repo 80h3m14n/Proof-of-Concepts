@@ -1,0 +1,97 @@
+[
+  {
+    "cve": "CVE-2024-5932",
+    "vendor": "WordPress",
+    "product": "GiveWP - Donation Plugin for WordPress",
+    "type": "RCE",
+    "severity": "critical",
+    "tags": [
+      "network",
+      "auth-bypass"
+    ],
+    "cvss": {
+      "version": "3.1",
+      "score": 9.1,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    "poc": "https://github.com/EQSTLab/CVE-2024-5932/blob/main/PoC.php",
+    "references": [
+      {
+        "name": "NVD",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-5932"
+      },
+      {
+        "name": "WordPress Advisory",
+        "url": "https://wordpress.org/plugins/give/"
+      }
+    ],
+    "description": "RCE in GiveWP plugin via insufficient validation in donation flow handlers.",
+    "version_history": [
+      {
+        "version": "2.1.0",
+        "date": "2024-01-15",
+        "note": "Initial PoC release on GitHub"
+      },
+      {
+        "version": "2.1.1",
+        "date": "2024-02-03",
+        "note": "Updated for GiveWP v2.25.0"
+      },
+      {
+        "version": "2.1.2",
+        "date": "2024-03-10",
+        "note": "Added error handling and improved compatibility"
+      }
+    ]
+  },
+  {
+    "cve": "CVE-2024-32194",
+    "vendor": "Microsoft",
+    "product": "Windows",
+    "type": "RCE",
+    "severity": "critical",
+    "tags": [
+      "network",
+      "auth-bypass"
+    ],
+    "cvss": {
+      "version": "3.1",
+      "score": 8.8,
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    "poc": "https://github.com/80h314n/Proof-of-Concept/CVE-2024-32194/exploit.py",
+    "references": [
+      {
+        "name": "NVD",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-32194"
+      },
+      {
+        "name": "MITRE",
+        "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-32194"
+      }
+    ],
+    "description": "Windows remote code execution vulnerability with network attack surface.",
+    "version_history": [
+      {
+        "version": "1.0.0",
+        "date": "2024-02-10",
+        "note": "Initial PoC released"
+      },
+      {
+        "version": "1.0.1",
+        "date": "2024-02-15",
+        "note": "Fixed bypass detection"
+      },
+      {
+        "version": "1.1.0",
+        "date": "2024-03-01",
+        "note": "Added support for patched versions"
+      },
+      {
+        "version": "1.1.1",
+        "date": "2024-03-20",
+        "note": "Security improvements and reliability fixes"
+      }
+    ]
+  }
+]
